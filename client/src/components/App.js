@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar.js";
 import NewsFeed from './NewsFeed.js';
 import Login from "./Login.js";
-import SignupNavBar from "./SignupNavBar.js"
+
 import Catpanions from './Catpanions.js';
 import Profile from "./Profile.js";
 import Signup from "./Signup.js";
@@ -26,13 +26,13 @@ function App() {
 
   return (
     <div className="App">
-      {currentUser ? <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser}/> : <SignupNavBar />}
       <Routes>
-        <Route path={currentUser ? "/newsfeed" : "/"} element={currentUser ? <NewsFeed currentUser={currentUser}/> : <Login setCurrentUser={setCurrentUser}/>} />
+        <Route path="/" element={<Login setCurrentUser={setCurrentUser}/>} />
         <Route path="signup" element={<Signup setCurrentUser={setCurrentUser}/>} />
-        <Route path="mycatpanions" element={<Catpanions currentUser={currentUser} />} />
-        <Route path="me" element={<Profile currentUser={currentUser}/>}/>
-        <Route path="messaging" element={<MeowMail currentUser={currentUser}/>}/>
+        <Route path="newsfeed" element={currentUser ? <NewsFeed currentUser={currentUser} setCurrentUser={setCurrentUser}/> : <Login setCurrentUser={setCurrentUser}/>} />
+        <Route path="mycatpanions" element={<Catpanions currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+        <Route path="me" element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
+        <Route path="messaging" element={<MeowMail currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
         <Route path="myaccount" element={<MyAccount currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
       </Routes>
     </div>

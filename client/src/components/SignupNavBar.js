@@ -13,7 +13,7 @@ export default function SignupNavbar () {
         <StyledToolbar>
           <Typography variant="h5" sx={{ display: {xs: "none", sm:"block" }, ml: 1 }}>
             <Pets/> Whiskker
-            </Typography>
+          </Typography>
         </StyledToolbar>
     </AppBar>
   )

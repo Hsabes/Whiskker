@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Grid, TextField, Button, InputAdornment } from "@mui/material"
 import { IoLogoOctocat } from 'react-icons/io';
 import { GiCat } from 'react-icons/gi';
+import Navbar from "./NavBar.js";
 
 function MyAccount({currentUser, setCurrentUser}) {
     const [updateUser, setUpdateUser] = useState({
@@ -46,18 +47,19 @@ function MyAccount({currentUser, setCurrentUser}) {
       };
     
     return (
-        <div>
-        <Grid style={{ display: "inline-block", backgroundImage: `url(https://i.imgur.com/m8NVI9B.png)`,
-    backgroundSize: "cover",
-    backgroundAttachment: "fixed-right",
-    width: "100%",
-    height: "100%",
-    position: "absolute", 
-    backgroundRepeat: "no-repeat",
-    }}>
-      <Grid style={{ display: "inline-block", width: "100%", height: "100%" }}>
-        <Grid style={{ width: "300px", height: "300px", margin: "auto", marginTop: "13%"}}>
-          <form onSubmit={handleSubmit}>
+        <>
+        <Grid style={{ display: "inline-block", backgroundImage: `url(https://i.imgur.com/OyMROnz.jpg)`,
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed-right",
+        width: "100%",
+        height: "100%",
+        position: "absolute", 
+        backgroundRepeat: "no-repeat",
+        }}>
+          <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+          <Grid style={{ display: "inline-block", width: "100%", height: "100%" }}>
+            <Grid style={{ width: "300px", height: "300px", margin: "auto", marginTop: "13%"}}>
+            <form onSubmit={handleSubmit}>
             <Grid container 
             alignItems="center"
             justify="center"
@@ -153,7 +155,7 @@ function MyAccount({currentUser, setCurrentUser}) {
       </Grid>
     </Grid>
           
-        </div>
+    </>
   )
 }
 

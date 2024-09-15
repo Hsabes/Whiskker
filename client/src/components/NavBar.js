@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate,  Link as RouterLink } from 'react-router-dom'
 import { Pets, Home, Message } from "@mui/icons-material";
-import { AppBar, Toolbar, styled, Typography, Box, Badge, Avatar, Menu, MenuItem } from "@mui/material"
+import GroupIcon from '@mui/icons-material/Group';
+import TextsmsIcon from '@mui/icons-material/Textsms';
+import { AppBar, Toolbar, styled, Typography, Box, Badge, Avatar, Menu, MenuItem, Icon } from "@mui/material"
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { orange } from '@mui/material/colors';
 
 export default function Navbar ({setCurrentUser, currentUser}) {
 
@@ -21,45 +26,55 @@ const handleLogOut = () => {
   navigate("/")
 };
   
-
-// Materail UI 
+// Material UI 
   const StyledToolbar = styled(Toolbar) ({
     display: "flex",
     justifyContent: "space-between",
   })
 
   const Icons = styled(Box)(({ theme }) => ({
-    display:"flex" , alignItems:"center" , gap:"40px"
+    display:"flex" , alignItems:"center" , gap:"13px"
   }))
 
-
   return (
-    <div>
+    <>
     <AppBar position="sticky" sx={{backgroundColor:"#33691e"}}>
         <StyledToolbar>
-          <Typography variant="h6" sx={{ display: {xs: "none", sm:"block" } }}>
+          <Typography variant="h5" sx={{ display: {xs: "flex", sm:"flex" }, ml: 1 }}>
+            <Icon sx={{ mr: 1, color: orange[50], display: {xs: "flex", sm:"flex" } }} color='primary' component={RouterLink} to="/newsfeed">
+                  <Pets />
+            </Icon>
             Whiskker
-            </Typography>
-              <Pets sx={{ display: { xs: "block", sm: "none" } }} />
+          </Typography>
           <Icons>
-            <Badge color="primary" component={RouterLink} to="/newsfeed">
-                <Home/>
-            </Badge>
-            <Badge color="primary" component={RouterLink} to="/mycatpanions">
-                <Pets/>
-            </Badge>
-            <Badge color="primary" component={RouterLink} to="/messaging">
-                <Message/>
-            </Badge>
-                <Avatar src={currentUser.purrfile_picture}
-                onClick={e=>setOpen(true)}
-                />
+            <Tooltip title="My Profile">
+              <IconButton sx={{ color: orange[500] }} component={RouterLink} to="/me">
+                <Home fontSize="large"/>
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title="My Catpanions">
+              <IconButton sx={{ color: orange[500] }} component={RouterLink} to="/mycatpanions"> 
+                <GroupIcon fontSize="large"/>
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title="My Catmails">
+              <IconButton sx={{ color: orange[500] }} component={RouterLink} to="/messaging">
+                <TextsmsIcon fontSize="large"/>
+              </IconButton>
+            </Tooltip>
+
+            <Avatar src="https://i.imgur.com/AevJugc.jpg"
+            onClick={e=>setOpen(true)}
+            />
           </Icons>
+
+
         </StyledToolbar>
          <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
-        // anchorEl={anchorEl}
         open={open}
         onClose={e=>setOpen(false)}
         anchorOrigin={{
@@ -71,15 +86,10 @@ const handleLogOut = () => {
           horizontal: 'right',
         }}
       >
-        <MenuItem component={RouterLink} to="/me" onClick={e=>setOpen(false)}> Profile </MenuItem>
         <MenuItem component={RouterLink} to="/myaccount" onClick={e=>setOpen(false)}>My account</MenuItem>
         <MenuItem onClick={handleLogOut}>Logout</MenuItem>
       </Menu>
     </AppBar>
-    {/* <Box>
-      <Stack direction="column" alignItems="center" justifyContent="space-evenly" spacing={0.5}>
-      </Stack>
-    </Box> */}
-    </div>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IoLogoOctocat } from 'react-icons/io';
 import { GiCat } from 'react-icons/gi';
+import SignupNavBar from "./SignupNavBar.js"
 
 const defaultValues = {
   full_name: '',
@@ -68,6 +69,7 @@ export default function Signup( { setCurrentUser }) {
       position: "absolute", 
       backgroundRepeat: "no-repeat",
       }}>
+      <SignupNavBar />
       <Grid style={{ display: "inline-block", width: "100%", height: "100%" }}>
         <Grid style={{ width: "300px", height: "300px", margin: "auto", marginTop: "13%" }}>
           <form onSubmit={handleSubmit}>

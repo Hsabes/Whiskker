@@ -8,6 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import SignupNavBar from "./SignupNavBar.js"
 
 const defaultValues = {
   username: "",
@@ -74,6 +75,7 @@ export default function Login({ setCurrentUser}) {
     position: "absolute", 
     backgroundRepeat: "no-repeat", 
     }}>
+      <SignupNavBar />
       <Grid style={{ display: "inline-block", width: "100%", height: "100%" }}>
         <Grid style={{ width: "350px", height: "350px", margin: "auto", marginTop: "13%" }}>
           <form onSubmit={handleSubmit}>

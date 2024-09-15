@@ -1,8 +1,9 @@
 import { useState, React } from 'react';
 import { Grid, Typography, Paper, List, ListItem, Avatar, Divider, ListItemText, ListItemIcon, TextField, Fab, Button } from "@mui/material";
+import Navbar from './NavBar';
 // import { LocalConvenienceStoreOutlined } from '@mui/icons-material';
 
-export default function MeowMail ({currentUser}) {
+export default function MeowMail ({currentUser, setCurrentUser}) {
     const [commentTxt, setCommentTxt] = useState("");
     console.log(currentUser)
 
@@ -20,6 +21,7 @@ export default function MeowMail ({currentUser}) {
     // take each meow_mail and look for meow_mails with sender_id or recipient_id as currentUser.id || selected friend's id
     return (
         <div>
+            <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             <Grid container marginTop={10} marginBottom={5} align="center">
                 <Grid item xs={12}>
                     <Typography variant="h5" className="header-message"> MeowMessages</Typography>
